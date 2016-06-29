@@ -2,6 +2,7 @@ package br.trabalho.address;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.prefs.Preferences;
 
 import javafx.application.Application;
@@ -76,6 +77,8 @@ public class MainApp extends Application {
 		try {
 			// Load root layout from fxml file.
 			FXMLLoader loader = new FXMLLoader();
+			URL url = MainApp.class.getResource("view/");
+			System.out.println(url);
 			loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
 			rootLayout = (BorderPane) loader.load();
 
@@ -106,6 +109,8 @@ public class MainApp extends Application {
 		try {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
+			URL url = MainApp.class.getResource("view/");
+			System.out.println();
 			loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
 
@@ -170,7 +175,7 @@ public class MainApp extends Application {
 
 			// Create the dialog Stage.
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Edit Person");
+			dialogStage.setTitle("Cadastro de Cliente");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
 			dialogStage.getIcons().add(new Image("file:resources/images/edit.png"));

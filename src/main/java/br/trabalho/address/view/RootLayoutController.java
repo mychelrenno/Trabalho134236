@@ -164,15 +164,25 @@ public class RootLayoutController {
     	Cliente c = new Cliente();
     	
     	c.setBairro(clienteBairro.getText());
+    	System.out.println(c.getBairro());
     	c.setCelular(clienteCelular.getText());
+    	System.out.println(c.getCelular());
         c.setCep(clienteCep.getText());
+        System.out.println(c.getCep());
         c.setCidade(clienteCidade.getText());
+        System.out.println(c.getCidade());
         c.setComplemento(clienteComplemento.getText());
+        System.out.println(c.getComplemento());
         c.setEndereco(clienteEndereco.getText());
+        System.out.println(c.getEndereco());
         c.setEstado(clienteEstado.getText());
+        System.out.println(c.getEstado());
         c.setNome(clienteNome.getText());
+        System.out.println(c.getNome());
         c.setNumero(clienteNumero.getText());
+        System.out.println(c.getNumero());
         c.setTelefone(clienteTelefone.getText());
+        System.out.println(c.getTelefone());
 //
 //        okClicked = true;
 //        dialogStage.close();

@@ -84,6 +84,8 @@ public class PersonEditDialogController {
     private void handleOk() {
         if (isInputValid()) {
             person.setFirstName(firstNameField.getText());
+            System.out.println(person.getFirstName());
+            
             person.setLastName(lastNameField.getText());
             person.setStreet(streetField.getText());
             person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
