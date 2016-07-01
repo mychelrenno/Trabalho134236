@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 public class Conexao {
 
-	private final String url = "jdbc:mysql://localhost/ecommercedb";
+	private final String url = "jdbc:mysql://localhost/trabalhojava";
     private final String user = "root";
     private final String pass = "sucesso";
     private Connection connection;

@@ -1,16 +1,17 @@
 package br.trabalho.address.view;
 
 import java.io.File;
-
-import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-import javafx.stage.FileChooser;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import org.controlsfx.dialog.Dialogs;
 
+import br.trabalho.address.Conexao;
 import br.trabalho.address.MainApp;
 import br.trabalho.address.model.Cliente;
-import br.trabalho.address.util.DateUtil;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 
 /**
  * The controller for the root layout. The root layout provides the basic
@@ -19,7 +20,7 @@ import br.trabalho.address.util.DateUtil;
  * 
  * @author Marco Jakob
  */
-public class RootLayoutController {
+public class RootLayoutController extends Conexao{
 
 	@FXML
     private TextField clienteNome;
@@ -183,9 +184,31 @@ public class RootLayoutController {
         System.out.println(c.getNumero());
         c.setTelefone(clienteTelefone.getText());
         System.out.println(c.getTelefone());
-//
-//        okClicked = true;
-//        dialogStage.close();
+        
+        String sql = "INSERT INTO TB_CLIENTE(cl_nome, cl_endereco, cl_numero, cl_complemento, cl_bairro, "
+        		+ "cl_cidade, cl_estado, cl_cep, cl_telefone, cl_celular)"
+        		+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        
+        try {
+			PreparedStatement ps = getConnection().prepareStatement(sql);
+			ps.setString(1, c.getNome());
+			ps.setString(2, c.getEndereco());
+			ps.setString(3, c.getNumero());
+			ps.setString(4, c.getComplemento());
+			ps.setString(5, c.getBairro());
+			ps.setString(6, c.getCidade());
+			ps.setString(7, c.getEstado());
+			ps.setString(8, c.getCep());
+			ps.setString(9, c.getTelefone());
+			ps.setString(10, c.getCelular());
+			
+			ps.execute();
+			ps.close();
+			
+		} catch (SQLException e) {
+			System.out.println("Erro ao percistir cliente");
+			e.printStackTrace();
+		}
     }
     
     @FXML
